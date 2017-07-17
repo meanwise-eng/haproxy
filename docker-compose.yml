@@ -1,0 +1,11 @@
+version: '2'
+services:
+  haproxy:
+    image: haproxy:1.7-alpine
+    volumes:
+      - './haproxy:/usr/local/etc/haproxy'
+      - '/opt/letsencrypt/live/www.meanwise.com/www.meanwise.com.pem:/etc/haproxy/certs/www.meanwise.com.pem'
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: 'always'
